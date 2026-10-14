@@ -37,7 +37,7 @@
 
 详细方案：[板块一/1-1_剖分几何质量定量诊断.md](板块一/1-1_剖分几何质量定量诊断.md)
 
-基本立场是没有最好的 DGGS，只有最适用的 DGGS。研究对象从 GeoSOT 扩展为轴对齐剖分网格这一类：以经纬度上轴对齐的 GeoSOT、Geohash、WorldCRS84Quad、GNOSIS Global Grid、北斗网格位置码、WebMercatorQuad、Open Location Code 为主要对象，以在投影平面上轴对齐的 HEALPix、S2 等为对照，GeoSOT 作为重点案例。以坐标变换、根区域、各轴细分比、整数对齐、极区处理、编码顺序六项设计参数刻画这类网格，把各项特性归因到参数上，标明其在何种需求下是代价、何种需求下是优势，区分轴对齐固有的共性特性（面积、形状、极区）与具体设计带来的个性特性（如 GeoSOT 的无效编码与层级过渡）。以应用画像刻画需求，建立覆盖单元几何、邻接拓扑、层级结构、编码与键空间、对象表达、数据对齐的 10 项核心指标，与 2-5 的聚簇指标互补，由需求推出各网格的适用域；在低空、全球气候与城市大数据三类场景下，以只改变一个设计参数的对照网格检验指标预测的适用性排序是否与任务中的实际排序一致 \[1\]\[2\]。
+基本立场是没有最好的 DGGS，只有最适用的 DGGS。研究对象从 GeoSOT 扩展为轴对齐剖分网格这一类：以经纬度上轴对齐的 GeoSOT、Geohash、WorldCRS84Quad、GNOSIS Global Grid、北斗网格位置码、WebMercatorQuad、Open Location Code 为主要对象，以在投影平面上轴对齐的 HEALPix、S2 等为对照，GeoSOT 作为重点案例。以坐标变换、根区域、各轴细分比、整数对齐、极区处理、编码顺序六项设计参数刻画这类网格，把各项特性归因到参数上，标明其在何种需求下是代价、何种需求下是优势，区分轴对齐固有的共性特性（面积、形状、极区）与具体设计带来的个性特性（如 GeoSOT 的无效编码与层级过渡）。以应用画像刻画需求，建立覆盖单元几何、邻接拓扑、层级结构、编码与键空间、对象表达、数据对齐的 10 项核心指标，与 2-5 的聚簇指标互补，由需求推出各网格的适用域；在低空、全球气候与城市大数据三类场景下，以只改变一个设计参数的对照网格检验指标预测的适用性排序是否与任务中的实际排序一致 [^b1-1][^b1-2]。
 
 关键问题：指标能否预测任务中的适用性排序，以及特性如何归因到设计参数。
 
@@ -45,7 +45,7 @@
 
 详细方案：[板块一/1-2_边界问题与扩展单元.md](板块一/1-2_边界问题与扩展单元.md)
 
-借鉴 XZ 序与松散四叉树的思想 \[3\]，为每个网格定义向外扩展的“扩展单元”，使跨边界的小对象能以与其尺寸相称的层级表达；扩展信息以附加位承载，不改变标准编码。边界问题是所有层级网格的共性，方法对层级轴对齐网格通用，以 GeoSOT 为实现主线，另选 Geohash、Open Location Code 验证。
+借鉴 XZ 序与松散四叉树的思想 [^b1-3]，为每个网格定义向外扩展的“扩展单元”，使跨边界的小对象能以与其尺寸相称的层级表达；扩展信息以附加位承载，不改变标准编码。边界问题是所有层级网格的共性，方法对层级轴对齐网格通用，以 GeoSOT 为实现主线，另选 Geohash、Open Location Code 验证。
 
 关键问题：扩展单元引入重叠后，规范形式与集合运算（2-1）如何保持唯一与封闭。
 
@@ -98,13 +98,13 @@
 - 兼容性：所有改进以附加层或派生视图实现，不破坏既有数据与终端。
 - 国际对齐：OGC 抽象规范 Topic 21 第二版的修订内容含对轴对齐单元的支持，轴对齐专门部分为后续计划（[OGC 20-040r3](https://docs.ogc.org/as/20-040r3/20-040r3.html)），评估与演进成果可为 GeoSOT 注册为 DGGRS 提供依据。
 
-延伸阅读：
-
-1. Kimerling A J, Sahr K, White D, Song L. Comparing geometrical properties of global grids. Cartography and Geographic Information Science, 1999, 26(4): 271-288. DOI: 10.1559/152304099782294186.
-2. Sahr K, White D, Kimerling A J. Geodesic discrete global grid systems. Cartography and Geographic Information Science, 2003, 30(2): 121-134. DOI: 10.1559/152304003100011090.
-3. Böhm C, Klump G, Kriegel H-P. XZ-ordering: a space-filling curve for objects with spatial extension. SSD 1999, LNCS 1651: 75-90. DOI: 10.1007/3-540-48482-5_7.
+延伸阅读：[^b1-1][^b1-2][^b1-3]
 
 以上三条已据 Crossref 核对。
+
+[^b1-1]: Kimerling A J, Sahr K, White D, Song L. Comparing geometrical properties of global grids. Cartography and Geographic Information Science, 1999, 26(4): 271-288. DOI: 10.1559/152304099782294186.
+[^b1-2]: Sahr K, White D, Kimerling A J. Geodesic discrete global grid systems. Cartography and Geographic Information Science, 2003, 30(2): 121-134. DOI: 10.1559/152304003100011090.
+[^b1-3]: Böhm C, Klump G, Kriegel H-P. XZ-ordering: a space-filling curve for objects with spatial extension. SSD 1999, LNCS 1651: 75-90. DOI: 10.1007/3-540-48482-5_7.
 
 ## 板块二：DGGS 本身的深入创新研究
 
@@ -139,20 +139,27 @@
 | --- | --- | --- | --- |
 | AI 自动发现算法 | 大模型 + 进化搜索生成位运算程序，以几何暴力计算为真值裁判 | 精确且可验证 | 前沿，DGGS 上未见 |
 | 学习化空间索引 | 模型学习编码分布替代索引树 | 可保证 | 较成熟，可迁移 |
-| 学习化过滤 + 精确校验 | 网络筛候选，编码运算确认，后备结构保证零漏报 | 可保证 | 框架成熟，需适配 |
-| 神经算法推理 / 网格嵌入 | 网络模仿算法或向量化网格 | 近似 | 探索性，仅用于相似度、语义检索 |
+| 学习化过滤 + 精确校验 | 网络筛候选，编码运算确认，后备结构保证零漏报（学习化布隆过滤器见 [^b2b-5][^b2b-6]） | 可保证 | 框架成熟，需适配 |
+| 神经算法推理 [^b2b-4] / 网格嵌入 | 网络模仿算法或向量化网格 | 近似 | 探索性，仅用于相似度、语义检索 |
 
-主线为 AI 自动发现算法，先例包括 AlphaDev（Nature, 2023）、FunSearch（Nature, 2024）与 AlphaEvolve（2025），其产出是可读、可测试、可证明正确的代码而非黑盒网络。学习化索引可借鉴 ZM 索引（[MDM 2019](https://vbn.aau.dk/da/publications/learned-index-for-spatial-queries)）、RSMI（[VLDB 2020](https://vbn.aau.dk/ws/files/391644098/p2341_qi.pdf)）与保证包含、相交查询精度的 GLIN（[GitHub](https://github.com/DataOceanLab/GLIN)），评测见 [arXiv 2606.19034](https://arxiv.org/pdf/2606.19034)；GeoSOT 编码与 Z 序同构，可直接迁移。
+主线为 AI 自动发现算法，先例包括 AlphaDev（Nature, 2023）[^b2b-1]、FunSearch（Nature, 2024）[^b2b-2] 与 AlphaEvolve（2025）[^b2b-3]，其产出是可读、可测试、可证明正确的代码而非黑盒网络。学习化索引可借鉴 ZM 索引（[MDM 2019](https://vbn.aau.dk/da/publications/learned-index-for-spatial-queries)）、RSMI（[VLDB 2020](https://vbn.aau.dk/ws/files/391644098/p2341_qi.pdf)）与保证包含、相交查询精度的 GLIN（[GitHub](https://github.com/DataOceanLab/GLIN)），评测见 [arXiv 2606.19034](https://arxiv.org/pdf/2606.19034)；GeoSOT 编码与 Z 序同构，可直接迁移。
 
 #### 2.2.4 高频更新的四维时空索引（2-3）
 
 与 2-6（见 2.2.6）分工明确，2-6 决定数据在一维存储中如何排列，本方向在排列已定的前提下解决实时位置流带来的高频插入与更新。UTM 中无人机位置每秒更新，而插入与更新代价正是学习化索引的主要短板。
 
-- 经典移动对象索引：TPR 树以参数化包围盒索引持续运动的对象；Bx 树以空间填充曲线加 B+ 树、按时间分区组织移动对象，结构上与 GeoSOT 编码最接近，是首选基线。
-- 可更新的学习化索引：ALEX 通过间隙数组与自适应结构支持插入；LISA 与 RSMI 将学习化索引扩展到空间数据并支持更新（RSMI 见 [VLDB 2020](https://vbn.aau.dk/ws/files/391644098/p2341_qi.pdf)）。
+- 经典移动对象索引：TPR 树以参数化包围盒索引持续运动的对象 [^b2a-1]；Bx 树 [^b2a-2] 以空间填充曲线加 B+ 树、按时间分区组织移动对象，结构上与 GeoSOT 编码最接近，是首选基线。
+- 可更新的学习化索引：ALEX 通过间隙数组与自适应结构支持插入 [^b2a-3]；LISA [^b2a-4] 与 RSMI 将学习化索引扩展到空间数据并支持更新（RSMI 见 [VLDB 2020](https://vbn.aau.dk/ws/files/391644098/p2341_qi.pdf)）。
 - GeoSOT 切入点：利用编码前缀把更新局限在父网格子树内；按时间片滚动重训练，旧时间片冻结；位置抖动只在同一网格内时免更新，以层级选择控制更新频率。
 
-延伸阅读（已据 Crossref 核对）：Šaltenis S, Jensen C S, Leutenegger S T, López M A. Indexing the positions of continuously moving objects. SIGMOD 2000；Jensen C S, Lin D, Ooi B C. Query and update efficient B+-tree based indexing of moving objects. VLDB 2004；Ding J, Minhas U F, Yu J, et al. ALEX: an updatable adaptive learned index. SIGMOD 2020；Li P, Lu H, Zheng Q, Yang L, Pan G. LISA: a learned index structure for spatial data. SIGMOD 2020。
+延伸阅读：[^b2a-1][^b2a-2][^b2a-3][^b2a-4]
+
+以上四条中，第 1、3、4 条已据 Crossref 核对；第 2 条（VLDB 2004）页码据 DBScholar 与维基百科，未取得出版社页面。
+
+[^b2a-1]: Šaltenis S, Jensen C S, Leutenegger S T, López M A. Indexing the positions of continuously moving objects. Proceedings of the 2000 ACM SIGMOD International Conference on Management of Data, 2000: 331-342. DOI: 10.1145/342009.335427.
+[^b2a-2]: Jensen C S, Lin D, Ooi B C. Query and update efficient B+-tree based indexing of moving objects. Proceedings of the 30th International Conference on Very Large Data Bases (VLDB), 2004: 768-779.
+[^b2a-3]: Ding J, Minhas U F, Yu J, et al. ALEX: an updatable adaptive learned index. Proceedings of the 2020 ACM SIGMOD International Conference on Management of Data, 2020: 969-984. DOI: 10.1145/3318464.3389711.
+[^b2a-4]: Li P, Lu H, Zheng Q, Yang L, Pan G. LISA: a learned index structure for spatial data. Proceedings of the 2020 ACM SIGMOD International Conference on Management of Data, 2020: 2119-2133. DOI: 10.1145/3318464.3389703.
 
 #### 2.2.5 GeoSOT 多尺度剖分图神经网络（2-4）
 
@@ -170,15 +177,15 @@
 
 网格编码的聚簇性能决定其作为空间索引的效率。经典理论多在平面方格上讨论，DGGS 研究多为“Hilbert 对比 Z 序”的个案实验，面向 DGGS 的系统评价体系与学习化改进仍属空白。独立存储键的决策依据（在何种数据规模与查询负载下值得引入，且不替换 OGC API – DGGS 要求的标准子单元顺序）也由本方向给出，原属 1-5 的此部分内容已并入。
 
-- 经典理论：Moon 等将“聚簇数”定义为查询区域在曲线上被切分出的连续编码段数，给出 Hilbert 曲线的闭式解，并证明簇数取决于查询区域的表面积而非体积，Hilbert 优于 Z 序 \[1\]；Xu 与 Tirthapura 给出任意曲线聚簇数的首个非平凡下界 \[2\]，Onion 曲线进一步表明 Hilbert 可能远非最优 \[3\]，说明须结合查询负载评价。
-- DGGS 与 GeoSOT：多尺度 Hilbert 曲线相对 Z 曲线的空间连续性提升 15%～30% \[7\]；HGST 将 Hilbert 与 GeoSOT 结合用于海量轨迹时空范围查询 \[8\]。
-- 学习化曲线：QUILTS 按查询负载设计曲线 \[9\]；BMTree 以强化学习构建分段曲线，扩展版支持负载变化后的局部重训练 \[10\]；LMSFC 直接学习单调曲线 \[11\]；常数时间代价模型使学习过程无需实际执行查询 \[12\]。
+- 经典理论：Moon 等将“聚簇数”定义为查询区域在曲线上被切分出的连续编码段数，给出 Hilbert 曲线的闭式解，并证明簇数取决于查询区域的表面积而非体积，Hilbert 优于 Z 序 [^b2-1]；Xu 与 Tirthapura 给出任意曲线聚簇数的首个非平凡下界 [^b2-2]，Onion 曲线进一步表明 Hilbert 可能远非最优 [^b2-3]，说明须结合查询负载评价。
+- DGGS 与 GeoSOT：多尺度 Hilbert 曲线相对 Z 曲线的空间连续性提升 15%～30% [^b2-7]；HGST 将 Hilbert 与 GeoSOT 结合用于海量轨迹时空范围查询 [^b2-8]。
+- 学习化曲线：QUILTS 按查询负载设计曲线 [^b2-9]；BMTree 以强化学习构建分段曲线，扩展版支持负载变化后的局部重训练 [^b2-10]；LMSFC 直接学习单调曲线 [^b2-11]；常数时间代价模型使学习过程无需实际执行查询 [^b2-12]。
 
 | 层面 | 指标 | 参考 |
 | --- | --- | --- |
-| 几何局部性（与查询无关） | 膨胀比（最坏与平均）、连续性与跳变次数、包围盒质量 | \[4\]\[5\]\[6\] |
-| 查询聚簇（与负载相关） | 编码段数、与下界之比、冗余覆盖率、跨层级聚簇 | \[1\]\[2\]\[3\] |
-| 系统代价 | 数据块访问数、寻址次数、延迟、编码解码开销 | \[12\] |
+| 几何局部性（与查询无关） | 膨胀比（最坏与平均）、连续性与跳变次数、包围盒质量 | [^b2-4][^b2-5][^b2-6] |
+| 查询聚簇（与负载相关） | 编码段数、与下界之比、冗余覆盖率、跨层级聚簇 | [^b2-1][^b2-2][^b2-3] |
+| 系统代价 | 数据块访问数、寻址次数、延迟、编码解码开销 | [^b2-12] |
 | DGGS 特有 | 两极与 180° 经线处退化、无效编码空洞比例、以球面距离计算的局部性、三维与时空四维的维度权衡 | 待建立 |
 
 - 编码不变、排序可学：GeoSOT 编码作为国家标准对外交换不变，另学一个仅用于物理存储的排序键，映射须廉价且可逆。
@@ -186,23 +193,23 @@
 - 时空四维位交织：经度、纬度、高度、时间各维二进制位的交织顺序按负载学习，例如 UTM 查询时间窄、空间宽。
 - 验证：以上述指标与代价模型为目标，在轨迹与 UTM 查询负载上与 GeoSOT 原生 Z 序、多尺度 Hilbert、HGST、BMTree、LMSFC 对比，并研究负载漂移下的增量更新。
 
-延伸阅读：
-
-1. Moon B, Jagadish H V, Faloutsos C, Saltz J H. Analysis of the clustering properties of the Hilbert space-filling curve. IEEE TKDE, 2001, 13(1): 124-141.（[IEEE](https://ieeexplore.ieee.org/abstract/document/908985/keywords)，[技术报告](https://www.cs.arizona.edu/sites/default/files/TR99-10.pdf)）
-2. Xu P, Tirthapura S. On the optimality of clustering properties of space filling curves. PODS 2012: 215-224；期刊扩展版：Optimality of clustering properties of space-filling curves. ACM TODS, 2014, 39(2): 10。（[PODS](https://www.ece.iastate.edu/snt/files/2015/10/pods12-clustering.pdf)，[TODS](https://www.ece.iastate.edu/snt/files/2016/02/Clustering-TODS.pdf)）
-3. Xu P, Nguyen C, Tirthapura S. Onion curve: a space filling curve with near-optimal clustering. ICDE 2018.（[arXiv 1801.07399](https://arxiv.org/pdf/1801.07399v1)）
-4. Gotsman C, Lindenbaum M. On the metric properties of discrete space-filling curves. IEEE Transactions on Image Processing, 1996, 5(5): 794-797.
-5. Haverkort H, van Walderveen F. Locality and bounding-box quality of two-dimensional space-filling curves. Computational Geometry, 2010, 43(2): 131-147.（[arXiv 0806.4787](https://arxiv.org/pdf/0806.4787)）
-6. Haverkort H. An inventory of three-dimensional Hilbert space-filling curves.（[arXiv 1109.2323](https://ar5iv.arxiv.org/html/1109.2323)，与 GeoSOT-3D 相关）
-7. 翟卫欣, 陈波, 童晓冲, 程承旗. 多尺度空间填充曲线空间连续性研究. 北京大学学报（自然科学版）, 2018, 54(2): 331-335. DOI: 10.13209/j.0479-8023.2017.147.（[链接](https://xbna.pku.edu.cn/EN/Y2018/V54/I2/331)）
-8. Liu H, Yan J, Wang J, Chen B, Chen M, Huang X. HGST: a Hilbert-GeoSOT spatio-temporal meshing and coding method for efficient spatio-temporal range query on massive trajectory data. ISPRS IJGI, 2023, 12(3): 113. DOI: 10.3390/ijgi12030113.（[MDPI](https://www.mdpi.com/2220-9964/12/3/113/notes)）
-9. Nishimura S, Yokota H. QUILTS: multidimensional partitioning framework based on query-aware and skew-tolerant space-filling curves. SIGMOD 2017: 1525-1537.
-10. Li J, Wang Z, Cong G, et al. Towards designing and learning piecewise space-filling curves. PVLDB, 2023, 16(9).（[VLDB](https://vldb.org/pvldb/volumes/16/paper/Towards%20Designing%20and%20Learning%20Piecewise%20Space-Filling%20Curves)，[扩展版](https://arxiv.org/pdf/2505.01697v1)）
-11. Gao J, Cao X, Yao X, et al. LMSFC: a novel multidimensional index based on learned monotonic space filling curves. PVLDB, 2023, 16(10).（[VLDB](https://vldb.org/pvldb/volumes/16/paper/LMSFC%3A%20A%20Novel%20Multidimensional%20Index%20based%20on%20Learned%20Monotonic%20Space%20Filling%20Curves)）
-12. Liu G, Kulik L, Jensen C S, Li T, Borovica-Gajic R, Qi J. Efficient cost modeling of space-filling curves. PVLDB, 2024, 17(13): 4773-4785.（[arXiv 2312.16355](https://arxiv.org/pdf/2312.16355)）
-13. Chen X, Liu S, Yuan T, Ye T, Zeng K, Su H, Zheng K. Optimizing block skipping for high-dimensional data with learned adaptive curve（AdaCurve）. SIGMOD 2025. DOI: 10.1145/3709710.
+延伸阅读：[^b2-1][^b2-2][^b2-3][^b2-4][^b2-5][^b2-6][^b2-7][^b2-8][^b2-9][^b2-10][^b2-11][^b2-12][^b2-13]
 
 以上文献已据 Crossref、出版社页面与 arXiv 核对。
+
+[^b2-1]: Moon B, Jagadish H V, Faloutsos C, Saltz J H. Analysis of the clustering properties of the Hilbert space-filling curve. IEEE TKDE, 2001, 13(1): 124-141.（[IEEE](https://ieeexplore.ieee.org/abstract/document/908985/keywords)，[技术报告](https://www.cs.arizona.edu/sites/default/files/TR99-10.pdf)）
+[^b2-2]: Xu P, Tirthapura S. On the optimality of clustering properties of space filling curves. PODS 2012: 215-224；期刊扩展版：Optimality of clustering properties of space-filling curves. ACM TODS, 2014, 39(2): 10。（[PODS](https://www.ece.iastate.edu/snt/files/2015/10/pods12-clustering.pdf)，[TODS](https://www.ece.iastate.edu/snt/files/2016/02/Clustering-TODS.pdf)）
+[^b2-3]: Xu P, Nguyen C, Tirthapura S. Onion curve: a space filling curve with near-optimal clustering. ICDE 2018.（[arXiv 1801.07399](https://arxiv.org/pdf/1801.07399v1)）
+[^b2-4]: Gotsman C, Lindenbaum M. On the metric properties of discrete space-filling curves. IEEE Transactions on Image Processing, 1996, 5(5): 794-797.
+[^b2-5]: Haverkort H, van Walderveen F. Locality and bounding-box quality of two-dimensional space-filling curves. Computational Geometry, 2010, 43(2): 131-147.（[arXiv 0806.4787](https://arxiv.org/pdf/0806.4787)）
+[^b2-6]: Haverkort H. An inventory of three-dimensional Hilbert space-filling curves.（[arXiv 1109.2323](https://ar5iv.arxiv.org/html/1109.2323)，与 GeoSOT-3D 相关）
+[^b2-7]: 翟卫欣, 陈波, 童晓冲, 程承旗. 多尺度空间填充曲线空间连续性研究. 北京大学学报（自然科学版）, 2018, 54(2): 331-335. DOI: 10.13209/j.0479-8023.2017.147.（[链接](https://xbna.pku.edu.cn/EN/Y2018/V54/I2/331)）
+[^b2-8]: Liu H, Yan J, Wang J, Chen B, Chen M, Huang X. HGST: a Hilbert-GeoSOT spatio-temporal meshing and coding method for efficient spatio-temporal range query on massive trajectory data. ISPRS IJGI, 2023, 12(3): 113. DOI: 10.3390/ijgi12030113.（[MDPI](https://www.mdpi.com/2220-9964/12/3/113/notes)）
+[^b2-9]: Nishimura S, Yokota H. QUILTS: multidimensional partitioning framework based on query-aware and skew-tolerant space-filling curves. SIGMOD 2017: 1525-1537.
+[^b2-10]: Li J, Wang Z, Cong G, et al. Towards designing and learning piecewise space-filling curves. PVLDB, 2023, 16(9).（[VLDB](https://vldb.org/pvldb/volumes/16/paper/Towards%20Designing%20and%20Learning%20Piecewise%20Space-Filling%20Curves)，[扩展版](https://arxiv.org/pdf/2505.01697v1)）
+[^b2-11]: Gao J, Cao X, Yao X, et al. LMSFC: a novel multidimensional index based on learned monotonic space filling curves. PVLDB, 2023, 16(10).（[VLDB](https://vldb.org/pvldb/volumes/16/paper/LMSFC%3A%20A%20Novel%20Multidimensional%20Index%20based%20on%20Learned%20Monotonic%20Space%20Filling%20Curves)）
+[^b2-12]: Liu G, Kulik L, Jensen C S, Li T, Borovica-Gajic R, Qi J. Efficient cost modeling of space-filling curves. PVLDB, 2024, 17(13): 4773-4785.（[arXiv 2312.16355](https://arxiv.org/pdf/2312.16355)）
+[^b2-13]: Chen X, Liu S, Yuan T, Ye T, Zeng K, Su H, Zheng K. Optimizing block skipping for high-dimensional data with learned adaptive curve（AdaCurve）. SIGMOD 2025. DOI: 10.1145/3709710.
 
 ### 2.3 论文
 
@@ -238,39 +245,39 @@
 
 #### 3.3.1 逐网格异方差预测（3-2）
 
-剖分图神经网络的每个节点同时输出均值与方差，以高斯负对数似然训练，刻画观测噪声等偶然不确定性 \[1\]。代价几乎为零，是其余方法的基础。证据深度学习可在单次前向中同时给出偶然与认知不确定性，可作为低成本替代 \[4\]。
+剖分图神经网络的每个节点同时输出均值与方差，以高斯负对数似然训练，刻画观测噪声等偶然不确定性 [^b3-1]。代价几乎为零，是其余方法的基础。证据深度学习可在单次前向中同时给出偶然与认知不确定性，可作为低成本替代 [^b3-4]。
 
 关键问题：方差在训练数据稀疏处易被低估，不能代替认知不确定性，需与 3.3.2 结合；同时应检验方差是否满足跨层级一致性，即父网格的方差应与子网格协方差的聚合一致。
 
 #### 3.3.2 集成与贝叶斯图神经网络（3-2）
 
-深度集成以多个独立训练模型之间的分歧度量认知不确定性，实现简单且校准良好 \[2\]；MC Dropout 在推理时保留 dropout，以较低代价近似贝叶斯推断 \[3\]。在 GeoSOT 剖分图上可输出“模型在哪些网格缺乏把握”的地图，直接服务 A-9 主动采样与不确定性驱动的自适应剖分。
+深度集成以多个独立训练模型之间的分歧度量认知不确定性，实现简单且校准良好 [^b3-2]；MC Dropout 在推理时保留 dropout，以较低代价近似贝叶斯推断 [^b3-3]。在 GeoSOT 剖分图上可输出“模型在哪些网格缺乏把握”的地图，直接服务 A-9 主动采样与不确定性驱动的自适应剖分。
 
 关键问题：集成成本随成员数线性增长；可只在细层级的局部网格上集成，或采用快照集成降低开销。
 
 #### 3.3.3 剖分图生成式概率模型（3-3）
 
-GenCast 以扩散模型在细化 6 次的二十面体网格上生成 15 天、0.25° 集合预报，精度首次超过 ECMWF 的 ENS \[5\]，说明“剖分图 + 扩散模型”路线可行。GeoSOT 版本在 2-4 的剖分图上做条件扩散，生成低空风场的集合成员；与 3.3.1 的逐点方差相比，集合成员保留了网格之间的空间相关结构，可直接用于 A-8 计算整条航迹的冲突概率。
+GenCast 以扩散模型在细化 6 次的二十面体网格上生成 15 天、0.25° 集合预报，精度首次超过 ECMWF 的 ENS [^b3-5]，说明“剖分图 + 扩散模型”路线可行。GeoSOT 版本在 2-4 的剖分图上做条件扩散，生成低空风场的集合成员；与 3.3.1 的逐点方差相比，集合成员保留了网格之间的空间相关结构，可直接用于 A-8 计算整条航迹的冲突概率。
 
 关键问题：扩散采样步数多、推理慢，可借鉴天气集合预报的扩散蒸馏加速（[arXiv 2608.27728](https://arxiv.org/pdf/2608.27728)）。
 
 #### 3.3.4 分层共形校准（3-2）
 
-共形预测不依赖分布假设，给出“真值以至少 1−α 的概率落入区间”的有限样本保证 \[6\]；自适应共形推断可在分布漂移下维持长期覆盖率 \[7\]，已有研究将其用于 GenCast 分位数校准（[综述](https://www.emergentmind.com/topics/gencast)）。
+共形预测不依赖分布假设，给出“真值以至少 1−α 的概率落入区间”的有限样本保证 [^b3-6]；自适应共形推断可在分布漂移下维持长期覆盖率 [^b3-7]，已有研究将其用于 GenCast 分位数校准（[综述](https://www.emergentmind.com/topics/gencast)）。
 
 关键问题：标准共形预测假设样本可交换，而空间数据存在自相关。可按 GeoSOT 层级与区域分组做分组共形校准，使覆盖率保证在每个层级、每个区域都成立；这一保证是 A-6 安全护盾给出漏检概率上限的依据。
 
-延伸阅读：
-
-1. Kendall A, Gal Y. What uncertainties do we need in Bayesian deep learning for computer vision? NeurIPS 2017.（[arXiv 1703.04977](https://arxiv.org/abs/1703.04977)）
-2. Lakshminarayanan B, Pritzel A, Blundell C. Simple and scalable predictive uncertainty estimation using deep ensembles. NeurIPS 2017.（[arXiv 1612.01474](https://arxiv.org/abs/1612.01474)）
-3. Gal Y, Ghahramani Z. Dropout as a Bayesian approximation: representing model uncertainty in deep learning. ICML 2016.（[arXiv 1506.02142](https://arxiv.org/abs/1506.02142)）
-4. Amini A, Schwarting W, Soleimany A, Rus D. Deep evidential regression. NeurIPS 2020.（[arXiv 1910.02600](https://arxiv.org/abs/1910.02600)）
-5. Price I, et al. Probabilistic weather forecasting with machine learning（GenCast）. Nature, 2025, 637(8044): 84-90.（[Nature](https://link.springer.com/10.1038/s41586-024-08252-9)，[arXiv 2312.15796](https://arxiv.org/html/2312.15796v2)）
-6. Angelopoulos A N, Bates S. A gentle introduction to conformal prediction and distribution-free uncertainty quantification. 期刊版：Conformal prediction: a gentle introduction. Foundations and Trends in Machine Learning, 2023, 16(4): 494-591.（[arXiv 2107.07511](https://arxiv.org/abs/2107.07511)）
-7. Gibbs I, Candès E. Adaptive conformal inference under distribution shift. NeurIPS 2021.（[arXiv 2106.00170](https://arxiv.org/abs/2106.00170)）
+延伸阅读：[^b3-1][^b3-2][^b3-3][^b3-4][^b3-5][^b3-6][^b3-7]
 
 以上七条已据 arXiv 与 Crossref 核对。
+
+[^b3-1]: Kendall A, Gal Y. What uncertainties do we need in Bayesian deep learning for computer vision? NeurIPS 2017.（[arXiv 1703.04977](https://arxiv.org/abs/1703.04977)）
+[^b3-2]: Lakshminarayanan B, Pritzel A, Blundell C. Simple and scalable predictive uncertainty estimation using deep ensembles. NeurIPS 2017.（[arXiv 1612.01474](https://arxiv.org/abs/1612.01474)）
+[^b3-3]: Gal Y, Ghahramani Z. Dropout as a Bayesian approximation: representing model uncertainty in deep learning. ICML 2016.（[arXiv 1506.02142](https://arxiv.org/abs/1506.02142)）
+[^b3-4]: Amini A, Schwarting W, Soleimany A, Rus D. Deep evidential regression. NeurIPS 2020.（[arXiv 1910.02600](https://arxiv.org/abs/1910.02600)）
+[^b3-5]: Price I, et al. Probabilistic weather forecasting with machine learning（GenCast）. Nature, 2025, 637(8044): 84-90.（[Nature](https://link.springer.com/10.1038/s41586-024-08252-9)，[arXiv 2312.15796](https://arxiv.org/html/2312.15796v2)）
+[^b3-6]: Angelopoulos A N, Bates S. A gentle introduction to conformal prediction and distribution-free uncertainty quantification. 期刊版：Conformal prediction: a gentle introduction. Foundations and Trends in Machine Learning, 2023, 16(4): 494-591.（[arXiv 2107.07511](https://arxiv.org/abs/2107.07511)）
+[^b3-7]: Gibbs I, Candès E. Adaptive conformal inference under distribution shift. NeurIPS 2021.（[arXiv 2106.00170](https://arxiv.org/abs/2106.00170)）
 
 ### 3.4 在应用层的落点
 
@@ -292,7 +299,6 @@ GenCast 以扩散模型在细化 6 次的二十面体网格上生成 15 天、0.
 - 集成与扩散模型计算成本高。
 - 需以空管员可理解的方式呈现不确定性。
 
-
 ## 板块四：DGGS 全球位置编码与网格基础模型
 
 位置编码决定 AI 模型如何理解地球上的位置，是网格基础模型的入口。本板块以 GeoSOT 层级编码构建全球位置编码器，再以此为基础构建网格基础模型，汇聚其他板块的成果。
@@ -301,7 +307,7 @@ GenCast 以扩散模型在细化 6 次的二十面体网格上生成 15 天、0.
 
 | 路线 | 代表方法 | 优点 | 局限 |
 | --- | --- | --- | --- |
-| 连续函数编码 | Space2Vec、Sphere2Vec（多尺度正余弦）；球谐函数 + SIREN | 平滑，可泛化到任意坐标 | 正余弦编码假设矩形域，两极易出伪影；分辨率受最高频率限制，米级需极高阶 |
+| 连续函数编码 | Space2Vec、Sphere2Vec [^b4a-1]（多尺度正余弦）；球谐函数 + SIREN | 平滑，可泛化到任意坐标 | 正余弦编码假设矩形域，两极易出伪影；分辨率受最高频率限制，米级需极高阶 |
 | 预训练编码器 | SatCLIP、GeoCLIP（与影像对比学习） | 携带地物语义，下游即插即用 | 分辨率受训练影像限制，局限于地表二维 |
 | 离散网格编码 | H3、S2 单元 ID 嵌入表 | 可任意细分，与空间索引一致 | 单元间无泛化，词表随层级爆炸，单元边界处不连续 |
 
@@ -314,25 +320,25 @@ GenCast 以扩散模型在细化 6 次的二十面体网格上生成 15 天、0.
 
 #### 4.2.1 多分辨率网格嵌入（4-1）
 
-每个层级维护一张可学习特征表，位置的表示为其所在各层级网格特征的拼接或加和。思路与 Instant-NGP 的多分辨率哈希编码同构 \[1\]，区别在于 GeoSOT 编码前缀天然给出各层级索引，粗层级无需哈希即可精确定位。粗层级完整建表；细层级采用哈希表或只为有数据的网格建表，以控制 32 个层级带来的参数膨胀。
+每个层级维护一张可学习特征表，位置的表示为其所在各层级网格特征的拼接或加和。思路与 Instant-NGP 的多分辨率哈希编码同构 [^b4-1]，区别在于 GeoSOT 编码前缀天然给出各层级索引，粗层级无需哈希即可精确定位。粗层级完整建表；细层级采用哈希表或只为有数据的网格建表，以控制 32 个层级带来的参数膨胀。
 
 关键问题：参与编码的层级范围如何选取，使之与任务尺度匹配。
 
 #### 4.2.2 网格内连续插值（4-1）
 
-离散嵌入在网格边界处不连续，相邻但跨边界的两点表示差异很大。借鉴 Instant-NGP 的插值方式 \[1\]，以位置在网格内的相对坐标对相邻网格特征加权，得到连续可微的表示。
+离散嵌入在网格边界处不连续，相邻但跨边界的两点表示差异很大。借鉴 Instant-NGP 的插值方式 [^b4-1]，以位置在网格内的相对坐标对相邻网格特征加权，得到连续可微的表示。
 
 关键问题：依赖高效求邻居（2-2），并需正确处理 180° 经线与两极处的邻接。
 
 #### 4.2.3 与连续函数编码融合（4-1）
 
-球谐函数在球面上原生定义，与 SIREN 组合后在多项任务上取得最优，尤其改善了极区表现 \[2\]，但分辨率受最高阶数限制。可在粗尺度用球谐函数保证全球平滑与极区正确，细尺度用 GeoSOT 网格嵌入提供米级细节，两者拼接后输入下游网络。Space2Vec 等多尺度正余弦编码可作为对比基线 \[3\]。
+球谐函数在球面上原生定义，与 SIREN 组合后在多项任务上取得最优，尤其改善了极区表现 [^b4-2]，但分辨率受最高阶数限制。可在粗尺度用球谐函数保证全球平滑与极区正确，细尺度用 GeoSOT 网格嵌入提供米级细节，两者拼接后输入下游网络。Space2Vec 等多尺度正余弦编码可作为对比基线 [^b4-3]。
 
 关键问题：两种表示的尺度分界点如何确定，以及融合后是否仍保持极区优势。
 
 #### 4.2.4 面向低空的四维扩展（4-2）
 
-SatCLIP 以卫星影像对比预训练得到通用位置嵌入，能编码相距遥远但环境相似的地点 \[4\]；GeoCLIP 以照片与位置对齐用于图像定位 \[5\]。二者均限于地表二维。以 GeoSOT-3D 编码加时间片构成四维编码：高度维沿用网格嵌入，时间维以周期编码表达日变化与季节变化。
+SatCLIP 以卫星影像对比预训练得到通用位置嵌入，能编码相距遥远但环境相似的地点 [^b4-4]；GeoCLIP 以照片与位置对齐用于图像定位 [^b4-5]。二者均限于地表二维。以 GeoSOT-3D 编码加时间片构成四维编码：高度维沿用网格嵌入，时间维以周期编码表达日变化与季节变化。
 
 关键问题：高度与水平方向的分辨率需求差异大，各维层级如何配比。
 
@@ -342,19 +348,19 @@ SatCLIP 以卫星影像对比预训练得到通用位置嵌入，能编码相距
 
 关键问题：概率分布跨越多个网格时的计算开销，以及期望表示是否会抹平关键细节。
 
-延伸阅读：
-
-1. Müller T, Evans A, Schied C, Keller A. Instant neural graphics primitives with a multiresolution hash encoding. ACM Transactions on Graphics, 2022, 41(4).（[arXiv 2201.05989](https://arxiv.org/abs/2201.05989)）
-2. Rußwurm M, Klemmer K, Rolf E, Zbinden R, Tuia D. Geographic location encoding with spherical harmonics and sinusoidal representation networks. ICLR 2024.（[ICLR](https://proceedings.iclr.cc/paper_files/paper/2024/hash/073c8584ef86bee26fe9d639ec648e28-Abstract-Conference.html)）
-3. Mai G, Janowicz K, Yan B, Zhu R, Cai L, Lao N. Multi-scale representation learning for spatial feature distributions using grid cells（Space2Vec）. ICLR 2020.（[arXiv 2003.00824](https://arxiv.org/abs/2003.00824)）
-4. Klemmer K, Rolf E, Robinson C, Mackey L, Rußwurm M. SatCLIP: global, general-purpose location embeddings with satellite imagery. AAAI 2025, 39(4): 4347-4355.（[arXiv 2311.17179](https://arxiv.org/abs/2311.17179v3)）
-5. Vivanco Cepeda V, Nayak G K, Shah M. GeoCLIP: CLIP-inspired alignment between locations and images for effective worldwide geo-localization. NeurIPS 2023.
+延伸阅读：[^b4-1][^b4-2][^b4-3][^b4-4][^b4-5]
 
 以上五条已据 arXiv、Crossref 与 AAAI 官网核对。
 
+[^b4-1]: Müller T, Evans A, Schied C, Keller A. Instant neural graphics primitives with a multiresolution hash encoding. ACM Transactions on Graphics, 2022, 41(4).（[arXiv 2201.05989](https://arxiv.org/abs/2201.05989)）
+[^b4-2]: Rußwurm M, Klemmer K, Rolf E, Zbinden R, Tuia D. Geographic location encoding with spherical harmonics and sinusoidal representation networks. ICLR 2024.（[ICLR](https://proceedings.iclr.cc/paper_files/paper/2024/hash/073c8584ef86bee26fe9d639ec648e28-Abstract-Conference.html)）
+[^b4-3]: Mai G, Janowicz K, Yan B, Zhu R, Cai L, Lao N. Multi-scale representation learning for spatial feature distributions using grid cells（Space2Vec）. ICLR 2020.（[arXiv 2003.00824](https://arxiv.org/abs/2003.00824)）
+[^b4-4]: Klemmer K, Rolf E, Robinson C, Mackey L, Rußwurm M. SatCLIP: global, general-purpose location embeddings with satellite imagery. AAAI 2025, 39(4): 4347-4355.（[arXiv 2311.17179](https://arxiv.org/abs/2311.17179v3)）
+[^b4-5]: Vivanco Cepeda V, Nayak G K, Shah M. GeoCLIP: CLIP-inspired alignment between locations and images for effective worldwide geo-localization. NeurIPS 2023.
+
 ### 4.3 GeoSOT 网格基础模型
 
-ClimaX、Aurora、Prithvi WxC 等地球基础模型多基于经纬度切块或固定均匀网格，DGGS 原生的通用模型尚无成型代表；GraphCast 骨干已被迁移到季节性火灾预测等任务（[FireCastNet](https://arxiv.org/pdf/2502.01550)）。
+ClimaX [^b4a-2]、Aurora [^b4a-3]、Prithvi WxC [^b4a-4] 等地球基础模型多基于经纬度切块或固定均匀网格，DGGS 原生的通用模型尚无成型代表；GraphCast 骨干已被迁移到季节性火灾预测等任务（[FireCastNet](https://arxiv.org/pdf/2502.01550)）。
 
 | 通用层次 | 含义 | GeoSOT 的作用 |
 | --- | --- | --- |
@@ -389,12 +395,14 @@ ClimaX、Aurora、Prithvi WxC 等地球基础模型多基于经纬度切块或�
 - 价值论证：通用模型未必在单一任务胜过专用模型，应以迁移能力、数据效率与跨尺度能力证明价值。
 - 公平对比：位置编码器需在统一任务与数据上与连续编码对比，避免只在网格友好的任务上验证。
 
-正文所涉其他模型文献（已据原文核对：Sphere2Vec 为多尺度正余弦编码；ClimaX、Aurora 将经纬度格网切块为词元，Prithvi WxC 在 MERRA-2 经纬度格网上以 2×2 像素词元分窗注意力）：
+正文所涉其他模型文献：[^b4a-1][^b4a-2][^b4a-3][^b4a-4]
 
-1. Mai G, Xuan Y, Zuo W, He Y, Song J, Ermon S, Janowicz K, Lao N. Sphere2Vec: a general-purpose location representation learning over a spherical surface for large-scale geospatial predictions. ISPRS Journal of Photogrammetry and Remote Sensing, 2023, 202: 439-462.（[arXiv 2306.17624](https://arxiv.org/abs/2306.17624)）
-2. Nguyen T, Brandstetter J, Kapoor A, Gupta J K, Grover A. ClimaX: a foundation model for weather and climate. ICML 2023.（[arXiv 2301.10343](https://arxiv.org/abs/2301.10343)）
-3. Bodnar C, Bruinsma W P, Lucic A, et al. A foundation model for the Earth system（Aurora）. Nature, 2025, 641(8065): 1180-1187. DOI: 10.1038/s41586-025-09005-y.（[arXiv 2405.13063](https://arxiv.org/abs/2405.13063)）
-4. Schmude J, Roy S, Trojak W, Jakubik J, et al. Prithvi WxC: foundation model for weather and climate.（[arXiv 2409.13598](https://arxiv.org/abs/2409.13598)）
+以上四条已据原文核对：Sphere2Vec 为多尺度正余弦编码；ClimaX、Aurora 将经纬度格网切块为词元，Prithvi WxC 在 MERRA-2 经纬度格网上以 2×2 像素词元分窗注意力。
+
+[^b4a-1]: Mai G, Xuan Y, Zuo W, He Y, Song J, Ermon S, Janowicz K, Lao N. Sphere2Vec: a general-purpose location representation learning over a spherical surface for large-scale geospatial predictions. ISPRS Journal of Photogrammetry and Remote Sensing, 2023, 202: 439-462.（[arXiv 2306.17624](https://arxiv.org/abs/2306.17624)）
+[^b4a-2]: Nguyen T, Brandstetter J, Kapoor A, Gupta J K, Grover A. ClimaX: a foundation model for weather and climate. ICML 2023.（[arXiv 2301.10343](https://arxiv.org/abs/2301.10343)）
+[^b4a-3]: Bodnar C, Bruinsma W P, Lucic A, et al. A foundation model for the Earth system（Aurora）. Nature, 2025, 641(8065): 1180-1187. DOI: 10.1038/s41586-025-09005-y.（[arXiv 2405.13063](https://arxiv.org/abs/2405.13063)）
+[^b4a-4]: Schmude J, Roy S, Trojak W, Jakubik J, et al. Prithvi WxC: foundation model for weather and climate.（[arXiv 2409.13598](https://arxiv.org/abs/2409.13598)）
 
 ## 板块五：面向低空的 DGGS 空域基础
 
@@ -454,7 +462,7 @@ ClimaX、Aurora、Prithvi WxC 等地球基础模型多基于经纬度切块或�
 
 ### 6.1 现有工作
 
-- 模式网格：新一代模式转向准均匀非结构网格。国内 GRIST 采用类二十面体 Voronoi 网格与六边形 C 网格，支持全球变分辨率（[GMD 2020](https://gmd.copernicus.org/articles/13/6325/2020/gmd-13-6325-2020-assets.html)，[框架介绍](https://cmalibrary.cn/amst/2024/202404/fmbd/202409/P020240927772890505636.pdf)）；国外 ICON 用二十面体网格 \[4\]、MPAS 用 Voronoi 网格 \[5\]、FV3 用立方球网格 \[6\]。
+- 模式网格：新一代模式转向准均匀非结构网格。国内 GRIST 采用类二十面体 Voronoi 网格与六边形 C 网格，支持全球变分辨率（[GMD 2020](https://gmd.copernicus.org/articles/13/6325/2020/gmd-13-6325-2020-assets.html)，[框架介绍](https://cmalibrary.cn/amst/2024/202404/fmbd/202409/P020240927772890505636.pdf)）；国外 ICON 用二十面体网格 [^b6-4]、MPAS 用 Voronoi 网格 [^b6-5]、FV3 用立方球网格 [^b6-6]。
 - 层级输出：DKRZ 将千米级 ICON 模拟输出写为 HEALPix 层级多分辨率数据，使分析时读取的数据量随分析范围而非模型规模变化（[easy.gems](https://easy.gems.dkrz.de/Processing/healpix)）；Hiopy 借助 YAC 耦合器在线生成层级时空聚合（[EGU 2026](https://meetingorganizer.copernicus.org/EGU26/EGU26-9822.html)）；nextGEMS 将输出统一到 HEALPix 网格，为 DestinE 气候数字孪生奠定基础（[DestinE](https://destine.ecmwf.int/news/pioneering-kilometre-scale-climate-simulations-the-nextgems-breakthroughs)）；Waterpark 将 ERA5、ICON、CMIP6 与观测统一重映射到 HEALPix 并存为 Zarr 金字塔（[Waterpark](https://waterpark.dkrz.de/storage_concepts/)）。
 - 耦合器：国内 C-Coupler 系列由清华大学研发，C-Coupler3.0 指出千米级网格的全局管理内存开销大，需支持更高分辨率耦合（[GMD 2023](https://gmd.copernicus.org/articles/16/2833/2023/)）。
 - 启示：HEALPix 已在 DKRZ、nextGEMS 等项目中成为高分辨率模式输出的层级网格，GeoSOT 在这一位置仍属空白，同时须正视 HEALPix 等面积的优势。
@@ -474,7 +482,7 @@ ClimaX、Aurora、Prithvi WxC 等地球基础模型多基于经纬度切块或�
 
 #### 6.3.2 分量耦合与守恒重映射（6-2）
 
-以 GeoSOT 作为大气、海洋、陆面等分量之间的公共交换网格，或作为重映射权重的组织索引：利用编码快速求网格交叠（2-2），生成一阶与二阶守恒重映射权重 \[2\]；按编码前缀做分布式划分，降低千米级网格管理的内存开销，回应 C-Coupler3.0 提出的问题。以质量与能量守恒误差、权重生成时间与内存为评价指标。
+以 GeoSOT 作为大气、海洋、陆面等分量之间的公共交换网格，或作为重映射权重的组织索引：利用编码快速求网格交叠（2-2），生成一阶与二阶守恒重映射权重 [^b6-2]；按编码前缀做分布式划分，降低千米级网格管理的内存开销，回应 C-Coupler3.0 提出的问题。以质量与能量守恒误差、权重生成时间与内存为评价指标。
 
 #### 6.3.3 跨层级降尺度与物理一致性（6-3）
 
@@ -486,7 +494,7 @@ GeoSOT 层级天然构成粗细尺度配对。以 AI 模型由第 n 级预测第
 
 #### 6.3.5 AI 模拟器的剖分图基座（6-5）
 
-以 2-4 剖分图承载 AI 天气与气候模拟器，与二十面体图（GraphCast、GenCast）及 HEALPix 对比。在物理与 AI 混合模型中 \[3\]，物理部分保留原生网格，AI 部分运行于 GeoSOT 图，两者经 6.3.2 的重映射衔接。
+以 2-4 剖分图承载 AI 天气与气候模拟器，与二十面体图（GraphCast、GenCast）及 HEALPix 对比。在物理与 AI 混合模型中 [^b6-3]，物理部分保留原生网格，AI 部分运行于 GeoSOT 图，两者经 6.3.2 的重映射衔接。
 
 ### 6.4 论文
 
@@ -504,16 +512,16 @@ GeoSOT 层级天然构成粗细尺度配对。以 AI 模型由第 n 级预测第
 - 先发优势：HEALPix 已有成熟工具链（如 CDO、healpy、easygems），须明确 GeoSOT 的增量价值。
 - 非等面积：所有统计、聚合与重映射须面积加权。
 
-延伸阅读：
+延伸阅读：[^b6-1][^b6-2][^b6-3][^b6-4][^b6-5][^b6-6]
 
-1. Górski K M, Hivon E, Banday A J, et al. HEALPix: a framework for high-resolution discretization and fast analysis of data distributed on the sphere. The Astrophysical Journal, 2005, 622(2): 759-771.
-2. Jones P W. First- and second-order conservative remapping schemes for grids in spherical coordinates. Monthly Weather Review, 1999, 127(9): 2204-2210.
-3. Kochkov D, et al. Neural general circulation models for weather and climate（NeuralGCM）. Nature, 2024, 632(8027): 1060-1066.
-4. Zängl G, Reinert D, Rípodas P, Baldauf M. The ICON (ICOsahedral Non-hydrostatic) modelling framework of DWD and MPI-M: description of the non-hydrostatic dynamical core. Quarterly Journal of the Royal Meteorological Society, 2015, 141(687): 563-579. DOI: 10.1002/qj.2378.
-5. Skamarock W C, Klemp J B, Duda M G, Fowler L D, Park S-H, Ringler T D. A multiscale nonhydrostatic atmospheric model using centroidal Voronoi tesselations and C-grid staggering. Monthly Weather Review, 2012, 140(9): 3090-3105. DOI: 10.1175/MWR-D-11-00215.1.
-6. Putman W M, Lin S-J. Finite-volume transport on various cubed-sphere grids. Journal of Computational Physics, 2007, 227(1): 55-78.
+以上六条已据 Crossref 与出版社页面核对；[^b6-4]–[^b6-6] 分别为 6.1 中 ICON（二十面体三角形 C 网格）、MPAS（质心 Voronoi 网格）、FV3（立方球网格）网格描述的原始文献。
 
-以上六条已据 Crossref 与出版社页面核对；\[4\]–\[6\] 分别为 6.1 中 ICON（二十面体三角形 C 网格）、MPAS（质心 Voronoi 网格）、FV3（立方球网格）网格描述的原始文献。
+[^b6-1]: Górski K M, Hivon E, Banday A J, et al. HEALPix: a framework for high-resolution discretization and fast analysis of data distributed on the sphere. The Astrophysical Journal, 2005, 622(2): 759-771.
+[^b6-2]: Jones P W. First- and second-order conservative remapping schemes for grids in spherical coordinates. Monthly Weather Review, 1999, 127(9): 2204-2210.
+[^b6-3]: Kochkov D, et al. Neural general circulation models for weather and climate（NeuralGCM）. Nature, 2024, 632(8027): 1060-1066.
+[^b6-4]: Zängl G, Reinert D, Rípodas P, Baldauf M. The ICON (ICOsahedral Non-hydrostatic) modelling framework of DWD and MPI-M: description of the non-hydrostatic dynamical core. Quarterly Journal of the Royal Meteorological Society, 2015, 141(687): 563-579. DOI: 10.1002/qj.2378.
+[^b6-5]: Skamarock W C, Klemp J B, Duda M G, Fowler L D, Park S-H, Ringler T D. A multiscale nonhydrostatic atmospheric model using centroidal Voronoi tesselations and C-grid staggering. Monthly Weather Review, 2012, 140(9): 3090-3105. DOI: 10.1175/MWR-D-11-00215.1.
+[^b6-6]: Putman W M, Lin S-J. Finite-volume transport on various cubed-sphere grids. Journal of Computational Physics, 2007, 227(1): 55-78.
 
 ## 板块七：海量时空数据组织与存储基础
 
@@ -522,7 +530,7 @@ GeoSOT 层级天然构成粗细尺度配对。以 AI 模型由第 n 级预测第
 ### 7.1 现有工作
 
 - 国际标准：OGC API – DGGS 第 1 部分已获批为正式 OGC 标准，与 ISO 19170-1:2021 一起补齐了 DGGS 互操作的关键环节（[OGC 公告](https://www.ogc.org/announcement/ogc-membership-approves-ogc-api-discrete-global-grid-systems-part-1-core-as-an-official-ogc-standard/)）；其 DGGRS 定义包括网格层级、单元标识参考系以及确定性的子单元顺序（[OGC API – DGGS](https://ogcapi.ogc.org/dggs/)）。因此 2-6 的学习化排序须作为独立的存储键，而不能替换标准规定的顺序。
-- 时空大数据引擎：GeoMesa 以 Z2、Z3 与 XZ 空间填充曲线在分布式键值库上索引时空数据；Apache Sedona（原 GeoSpark）、京东 JUST 等面向分布式时空分析 \[1\]–\[4\]。
+- 时空大数据引擎：GeoMesa 以 Z2、Z3 与 XZ 空间填充曲线在分布式键值库上索引时空数据；Apache Sedona（原 GeoSpark）、京东 JUST 等面向分布式时空分析 [^b7-1]–[^b7-4]。
 - GeoSOT 实践：HGST 结合 Hilbert 与 GeoSOT 实现海量轨迹时空范围查询（[IJGI 2023](https://www.mdpi.com/2220-9964/12/3/113/notes)）；G-SEED 基于 GeoSOT 构建林草数据时空编码框架（[arXiv 2506.18094](https://arxiv.org/pdf/2506.18094)）。
 - 云原生格式：Zarr 金字塔、GeoParquet 等格式兴起，DKRZ 的 Waterpark 已把多源气候数据统一到 HEALPix 并存为 Zarr 金字塔（[Waterpark](https://waterpark.dkrz.de/storage_concepts/)）。
 
@@ -580,14 +588,14 @@ GeoSOT 层级天然构成粗细尺度配对。以 AI 模型由第 n 级预测第
 - 与成熟引擎竞争：GeoMesa、Sedona 等已高度工程化，须以明确的效率或互操作优势立论。
 - 可复现性：需公开数据与查询负载，便于他人复现对比。
 
-延伸阅读：
-
-1. Hughes J N, Annex A, Eichelberger C N, Fox A, Hulbert A, Ronquest M. GeoMesa: a distributed architecture for spatio-temporal fusion. Proceedings of SPIE, 2015, 9473: 94730F.
-2. Böhm C, Klump G, Kriegel H-P. XZ-ordering: a space-filling curve for objects with spatial extension. SSD 1999, LNCS 1651: 75-90. DOI: 10.1007/3-540-48482-5_7.
-3. Yu J, Wu J, Sarwat M. GeoSpark: a cluster computing framework for processing large-scale spatial data. ACM SIGSPATIAL 2015.
-4. Li R, He H, Wang R, et al. JUST: JD urban spatio-temporal data engine. ICDE 2020.
+延伸阅读：[^b7-1][^b7-2][^b7-3][^b7-4]
 
 以上四条已据 Crossref 与 ICDE 官网核对。
+
+[^b7-1]: Hughes J N, Annex A, Eichelberger C N, Fox A, Hulbert A, Ronquest M. GeoMesa: a distributed architecture for spatio-temporal fusion. Proceedings of SPIE, 2015, 9473: 94730F.
+[^b7-2]: Böhm C, Klump G, Kriegel H-P. XZ-ordering: a space-filling curve for objects with spatial extension. SSD 1999, LNCS 1651: 75-90. DOI: 10.1007/3-540-48482-5_7.
+[^b7-3]: Yu J, Wu J, Sarwat M. GeoSpark: a cluster computing framework for processing large-scale spatial data. ACM SIGSPATIAL 2015.
+[^b7-4]: Li R, He H, Wang R, et al. JUST: JD urban spatio-temporal data engine. ICDE 2020.
 
 ## 应用层：应用验证
 
@@ -657,7 +665,16 @@ GeoSOT 层级天然构成粗细尺度配对。以 AI 模型由第 n 级预测第
 | 应用论文缺少方法贡献，被视为工程应用 | 应用层 | 每篇在应用层 A、B、C 组表中列明所验证的方法成果，并在文中阐明方法贡献 |
 | 切香肠式发表 | 全部 | 共用仿真平台与 5-5 数据集，但每篇问题定义与贡献独立完整 |
 
-AlphaDev、FunSearch、AlphaEvolve、神经算法推理（Veličković 与 Blundell，2021）、学习化布隆过滤器（Kraska 等 2018；Mitzenmacher 2018）等引用已据 Crossref 与 arXiv 核对：AlphaDev 见 Nature 618: 257-263；FunSearch 见 Nature 625: 468-475（2023 年 12 月在线，2024 年 1 月刊出）；AlphaEvolve 见 arXiv 2506.13131；Mitzenmacher 2018 指 NeurIPS 论文 A model for learned Bloom filters and optimizing by sandwiching，勿与 arXiv 1802.00884 混淆。
+AlphaDev、FunSearch、AlphaEvolve、神经算法推理、学习化布隆过滤器等文献：[^b2b-1][^b2b-2][^b2b-3][^b2b-4][^b2b-5][^b2b-6]
+
+以上文献已据 Crossref 与 arXiv 核对。FunSearch 于 2023 年 12 月在线、2024 年 1 月刊出，采用刊出年；AlphaEvolve 目前只有 arXiv 版本；Mitzenmacher 2018 指 NeurIPS 论文，勿与 arXiv 1802.00884 混淆，其页码 464-473 仅见 mlanthology，未在 NeurIPS 官网核对。
+
+[^b2b-1]: Mankowitz D J, Michi A, Zhernov A, et al. Faster sorting algorithms discovered using deep reinforcement learning. Nature, 2023, 618(7964): 257-263. DOI: 10.1038/s41586-023-06004-9.
+[^b2b-2]: Romera-Paredes B, Barekatain M, Novikov A, et al. Mathematical discoveries from program search with large language models. Nature, 2024, 625(7995): 468-475. DOI: 10.1038/s41586-023-06924-6.
+[^b2b-3]: Novikov A, Vũ N, Eisenberger M, et al. AlphaEvolve: a coding agent for scientific and algorithmic discovery. arXiv:2506.13131, 2025.（[arXiv](https://arxiv.org/abs/2506.13131)）
+[^b2b-4]: Veličković P, Blundell C. Neural algorithmic reasoning. Patterns, 2021, 2(7): 100273. DOI: 10.1016/j.patter.2021.100273.
+[^b2b-5]: Kraska T, Beutel A, Chi E H, et al. The case for learned index structures. Proceedings of the 2018 International Conference on Management of Data (SIGMOD), 2018: 489-504. DOI: 10.1145/3183713.3196909.
+[^b2b-6]: Mitzenmacher M. A model for learned Bloom filters and optimizing by sandwiching. Advances in Neural Information Processing Systems 31 (NeurIPS 2018): 464-473.（[NeurIPS](https://proceedings.neurips.cc/paper/2018/hash/0f49c89d1e7298bb9930789c8ed59d48-Abstract.html)）
 
 ## 投稿方向
 
