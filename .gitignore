@@ -1,0 +1,7 @@
+# 标准与论文的二进制原文体积大，不入库；OCR 与要点文本入库
+standard/*.pdf
+standard/*.html
+standard/ocr/*.pdf
+standard/ocr/.*.log
+literals/*.pdf
+__pycache__/
